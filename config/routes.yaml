@@ -1,0 +1,18 @@
+controllers:
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+
+ciao:
+  path: /ciao
+  controller: App\Controller\HomeController::ciao
+
+accueil:
+  path: /accueil
+  controller: App\Controller\AccueilController::index
+
+contact_submit:
+  path: /contact
+  controller: App\Controller\ContactController::submit
+  methods: POST
