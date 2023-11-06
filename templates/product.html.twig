@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste Produits</title>
+</head>
+<body>
+    <h1>Mes Produits</h1>
+    <h2>Liste de produits :</h2>
+    <ul>
+        {% if products is not empty %}
+            {% for product in products %}
+                <li>
+                    <form method="post" action="/showproducts/{{ loop.index }}">
+                        <input type="hidden" name="product_id" value="{{ loop.index }}">
+                        <input type="hidden" name="product_name" value="{{ product.name }}">
+                        <input type="hidden" name="product_price" value="{{ product.price }}">
+                        {{ loop.index }} - <a href="/showproducts/{{ loop.index }}" onclick="this.parentNode.submit(); return false;"> {{ product.name }}</a>  à {{ product.price }} euros
+                    </form>
+                </li>
+                {% if loop.last %}
+                    <p>Voilà nos produits encore disponibles...</p>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <li>Aucun produit trouvé.</li>
+        {% endif %}
+    </ul>
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clients</title>
+</head>
+<body>
+    <h1>Clients</h1>
+    <h2>Liste des clients</h2>
+<!-- Ici, vous pouvez ajouter une structure pour afficher les clients -->
+    <ol>
+        {% if customers is not empty %}
+            {% for customer in customers %}
+                <li>
+                    <form method="post" action="{{ path('dashboard') }}">
+                        <input type="hidden" name="customer_id" value="{{ loop.index }}">
+                        <input type="hidden" name="customer_name" value="{{ customer.name }}">
+                        <input type="hidden" name="product_id" value="{{ customer.product }}">
+                        <a href="{{ path('dashboard') }}" onclick="this.parentNode.submit(); return false;"> {{ customer.name }}</a>
+                    </form>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>Aucun produit trouvé.</li>
+        {% endif %}
+    </ol>
+</body>
+</html>

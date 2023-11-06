@@ -16,3 +16,7 @@ contact_submit:
   path: /contact
   controller: App\Controller\ContactController::submit
   methods: POST
+
+show_template:
+  path: /showtemplate
+  controller: App\Controller\HomeController::showTemplate

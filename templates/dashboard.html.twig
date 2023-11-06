@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <h2>Client : {{ nom_client }}</h2>
+    <h4>Identifiant : {{ id_client }}</h4>
+    <br>
+    <h4>Information client</h4>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+        Voluptas nisi inventore placeat iure aliquam ad nemo vel, aut praesentium doloremque.<br> 
+        Amet dolor optio quod accusantium aperiam. Pariatur consequatur illum aliquid!
+    </p>
+    <h4>Identifiant produit préféré du client : <a href="/showproducts/{{ id_product }}" onclick="this.parentNode.submit(); return false;"> {{ id_product }}</a></h4>
+    <p>
+        PS : le lien marche vers la page produit mais je n'ai pas eu le temps de trouver comment vraiment récupérer les informations produits (nom/prix/img)<br>
+        Et puis en vrai j'avais pas vraiment compris la partie 6 du TP avec le lien entre les clients et les produits... et puis c'est pas vraiment un dashboard de juste faire des lien entre les pages clients / produits mais bon...
+    </p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <bouton>
+        <a href="{{ path('pages') }}">Retourner à la Page d'Accueil</a>
+    </bouton>
+</body>
+</html>

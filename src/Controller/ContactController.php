@@ -13,6 +13,7 @@ class ContactController extends AbstractController
     {
         $name = $request->request->get('name');
         $mail = $request->request->get('mail');
+        dump();
         return $this->render('contact.html.twig', ['nom' => $name, 'mail' => $mail]);
     }
 
