@@ -18,8 +18,6 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-
-
 /* Page en GENERALE */
 h1 {
     text-align: center;
@@ -45,7 +43,6 @@ bouton > a {
 	color: white;
 }
 /* Fin Page GENERALE */
-
 
 /*Page CONTACT*/
 #form {
