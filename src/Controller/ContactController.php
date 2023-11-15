@@ -11,10 +11,10 @@ class ContactController extends AbstractController
 {
     public function submit(Request $request)
     {
-        $name = $request->request->get('name');
-        $mail = $request->request->get('mail');
-        dump();
-        return $this->render('contact.html.twig', ['nom' => $name, 'mail' => $mail]);
+        $name = $request->request->get('nom');
+        $prenom = $request->request->get('prenom');
+        $mail = $request->request->get('email');
+        return $this->render('contact.html.twig', ['nom' => $name, 'prenom' => $prenom, 'mail' => $mail]);
     }
 
     /*

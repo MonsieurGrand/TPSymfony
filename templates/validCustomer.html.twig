@@ -8,8 +8,8 @@
 </head>
 <body id="contact">
     <h1>
-        Merci {{ nom }} {{ prenom }}, votre message a été reçu. <br>
-        Vous allez recevoir un mail à l'adresse suivante : {{ mail }}
+        Merci {{ request.nom }} {{ request.prenom }}, votre message a été reçu. <br>
+        Vous allez recevoir un mail à l'adresse suivante : {{ request.email }}
     </h1>
 
     <bouton>

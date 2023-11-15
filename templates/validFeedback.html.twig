@@ -8,8 +8,9 @@
 </head>
 <body id="contact">
     <h1>
-        Merci {{ nom }} {{ prenom }}, votre message a été reçu. <br>
-        Vous allez recevoir un mail à l'adresse suivante : {{ mail }}
+        Merci {{ request.nomClient }}, votre message a été reçu. <br>
+        Vous avez mis la note de {{ request.noteProduit }} à notre produit. <br>
+        Vous allez recevoir un mail de validation à l'adresse suivante : {{ request.emailClient }}
     </h1>
 
     <bouton>
