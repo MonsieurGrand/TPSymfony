@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="FR-fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Feedback</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+{% block body %}
+ <h1>Feedback List</h1>
+ <ul>
+ {% for feedback in feedbacks %}
+ <li>{{ feedback.nomClient }}&nbsp; ({{ feedback.emailClient }}) a mis la note de {{ feedback.noteProduit }}/5 avec ce commentaire : {{ feedback.commentaires }}&nbsp;  [ <a href="{{
+path('feedback_edit', {'id': feedback.id}) }}">Edit</a> - <a href="{{ path('feedback_delete',
+{'id': feedback.id}) }}">Supprimer</a> ]</li>
+ {% endfor %}
+ </ul>
+ <a href="{{ path('feedback') }}">Nouveau Feedback</a>
+ <br><br>
+ <a href="{{ path('pages') }}">Retour à la page d'accueil</a>
+{% endblock %}

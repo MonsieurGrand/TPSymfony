@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Feedback;
+use App\Form\FeedbackType;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -56,6 +59,47 @@ class HomeController extends AbstractController
             ];
         // La logique pour récupérer les données des clients peut être ajoutée ici
         return $this->render('customer.html.twig', ['customers' => $customers]);
+    }
+
+    #[Route('/feedlist', name: 'feedback_list')]
+    public function listfeed(ManagerRegistry $doctrine): Response
+    {
+        $repository = $doctrine->getRepository(Feedback::class);
+        $feedback = $repository->findAll();
+        // La logique pour récupérer les données des clients peut être ajoutée ici
+        return $this->render('feedlist.html.twig', ['feedbacks' => $feedback]);
+    }
+
+    #[Route('/feedback/edit/{id}', name: 'feedback_edit')]
+    public function edit(Request $request, ManagerRegistry $doctrine, $id): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $feedback = $entityManager->getRepository(Feedback::class)->find($id);
+        if (!$feedback) {
+            throw $this->createNotFoundException('Il n\'y a pas de feedback pour cet id : ' . $id);
+        }
+        $feedbackForm = $this->createForm(FeedbackType::class, $feedback);
+        $feedbackForm->handleRequest($request);
+        if ($feedbackForm->isSubmitted() && $feedbackForm->isValid()) {
+            $entityManager->flush();
+            return $this->redirectToRoute('feedback_list');
+        }
+        return $this->render('feedEdit.html.twig', [
+            'feedbackForm' => $feedbackForm->createView(),
+        ]);
+    }
+
+    #[Route('/feedback/delete/{id}', name: 'feedback_delete')]
+    public function delete(ManagerRegistry $doctrine, $id): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $feedback = $entityManager->getRepository(Feedback::class)->find($id);
+        if (!$feedback) {
+            throw $this->createNotFoundException('Aucun feedback pour cet id : ' . $id);
+        }
+        $entityManager->remove($feedback);
+        $entityManager->flush();
+        return $this->redirectToRoute('feedback_list');
     }
 
     #[Route('/dashboard', name: 'dashboard')]

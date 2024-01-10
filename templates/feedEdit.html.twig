@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="FR-fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Feedback</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+{% block body %}
+ <h1>Edit Feedback</h1>
+ {{ form_start(feedbackForm) }}
+ {{ form_widget(feedbackForm) }}
+ {{ form_end(feedbackForm) }}
+{% endblock %}
